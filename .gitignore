@@ -1,0 +1,12 @@
+# Prototype public : ne pas publier les interfaces ni les configurations historiques.
+parents.html
+legacy-admin.html
+firebase-messaging-sw.js
+manifest-parents.json
+netlify/
+installation.md
+seances/
+
+# Fichiers locaux
+.DS_Store
+Thumbs.db
