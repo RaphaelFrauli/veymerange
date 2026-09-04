@@ -5,7 +5,9 @@ firebase-messaging-sw.js
 manifest-parents.json
 netlify/
 installation.md
-seances/
+# Les fiches de séances font partie de la nouvelle interface Coach publiée.
+!seances/
+!seances/*.png
 
 # Fichiers locaux
 .DS_Store
