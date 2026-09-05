@@ -6223,7 +6223,14 @@ let rosterBannerEditor = (member) => {
       };
       rosterScreen = function () {
         const players = S.members.filter(member => member.status === "approved" && member.active !== false && !hiddenTeamAccount(member)).sort((a, b) => nm(a).localeCompare(nm(b)));
-        const photoUrl = member => member.photoUrl || playerDefaultPhoto(member);
+        // Les portraits gérés dans le dépôt doivent rester prioritaires : une
+        // ancienne URL Firebase ne doit pas masquer une photo remplacée ici.
+        const photoUrl = member => {
+          const defaultPhoto = playerDefaultPhoto(member);
+          return norm(nm(member)).startsWith("benoitsarasin")
+            ? defaultPhoto + "?v=f4d7a65"
+            : member.photoUrl || defaultPhoto;
+        };
         const card = member => {
           const photo = photoUrl(member), stats = playerCardStats(member), open = S.rosterDetailsId === member.id, position = playerPositionInfo(member.position);
           const portrait = photo ? `<img src="${esc(photo)}" alt="Photo de ${esc(nm(member))}">` : `<span class="player-banner-initials">${ini(member)}</span>`;
