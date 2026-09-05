@@ -1,0 +1,16 @@
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "none"
+
+[functions."auto-relance"]
+  schedule = "@hourly"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
