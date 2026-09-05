@@ -6128,6 +6128,13 @@ let rosterBannerEditor = (member) => {
         @media(prefers-reduced-motion:reduce){.player-details{transition:none}}
       `;
       document.head.append(refinedBannerStyle);
+      const portraitMask = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      portraitMask.setAttribute('width','0'); portraitMask.setAttribute('height','0');
+      portraitMask.setAttribute('aria-hidden','true');
+      portraitMask.style.position='absolute';
+      portraitMask.innerHTML = '<defs><clipPath id="camille-portrait-outline" clipPathUnits="objectBoundingBox"><path d="M .5 .084 C .568 .08 .61 .105 .624 .16 C .634 .18 .624 .209 .63 .229 C .651 .229 .644 .274 .625 .292 C .618 .324 .604 .345 .608 .377 C .652 .397 .765 .422 .812 .448 C .855 .465 .882 .499 .899 .539 C .922 .592 .936 .663 .946 .71 L .952 .739 C .93 .75 .931 .812 .909 .844 C .883 .879 .85 .9 .808 .916 L .81 1 L .192 1 L .19 .916 C .126 .89 .086 .85 .072 .807 C .066 .775 .061 .748 .051 .733 C .064 .674 .081 .585 .104 .531 C .122 .489 .148 .467 .192 .448 C .239 .427 .321 .398 .382 .38 L .391 .361 C .37 .33 .363 .305 .361 .285 C .341 .265 .347 .23 .362 .225 C .36 .162 .375 .127 .416 .104 C .443 .088 .47 .084 .5 .084 Z"/></clipPath></defs>';
+      document.body.append(portraitMask);
+      refinedBannerStyle.textContent += '.player-photo-silhouette img{clip-path:url(#camille-portrait-outline)}';
     </script>
   </body>
 </html>
